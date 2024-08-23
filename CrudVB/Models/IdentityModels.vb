@@ -37,11 +37,22 @@ Public Class CustomDbContext
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
         MyBase.OnModelCreating(modelBuilder)
-        ' Configurações adicionais aqui
+        ' Configuração para a relação many-to-many entre MaterialMovel e Fornecedor
+        modelBuilder.Entity(Of MaterialMovel)() _
+            .HasMany(Function(m) m.Fornecedores) _
+            .WithMany(Function(f) f.Materials) _
+            .Map(Sub(mp)
+                     mp.MapLeftKey("MaterialMovelId")
+                     mp.MapRightKey("FornecedorId")
+                     mp.ToTable("MaterialMovelFornecedor")
+                 End Sub)
+
+
     End Sub
 
     Public Property MaterialMovels As DbSet(Of MaterialMovel)
-    Public Property MovelPedidoes As System.Data.Entity.DbSet(Of MovelPedido)
+    Public Property MovelPedidoes As DbSet(Of MovelPedido)
+    Public Property Fornecedores As DbSet(Of Fornecedor)
 
 
 End Class

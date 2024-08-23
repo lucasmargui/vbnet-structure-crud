@@ -45,4 +45,7 @@ Public Class MaterialMovel
 
     ' Propriedade de navegação para relação One-to-Many
     Public Overridable Property MovelPedidos As ICollection(Of MovelPedido)
+
+    ' Propriedade de navegação para relação many-to-many
+    Public Overridable Property Fornecedores As ICollection(Of Fornecedor)
 End Class

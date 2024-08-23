@@ -228,6 +228,7 @@
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\Startup.Auth.vb" />
     <Compile Include="Controllers\AccountController.vb" />
+    <Compile Include="Controllers\FornecedorsController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
     <Compile Include="Controllers\MaterialMovelsController.vb" />
     <Compile Include="Controllers\MovelPedidosController.vb" />
@@ -238,8 +239,13 @@
       <DependentUpon>202408230326571_OneToMany.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202408230326571_OneToMany.vb" />
+    <Compile Include="Migrations\202408230349140_CreateManyToManyRelationshipFornecedores.Designer.vb">
+      <DependentUpon>202408230349140_CreateManyToManyRelationshipFornecedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202408230349140_CreateManyToManyRelationshipFornecedores.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="Models\AccountViewModels.vb" />
+    <Compile Include="Models\Fornecedor.vb" />
     <Compile Include="Models\IdentityModels.vb" />
     <Compile Include="Models\ManageViewModels.vb" />
     <Compile Include="Models\DatabaseConnectionModels.vb" />
@@ -266,6 +272,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202408230326571_OneToMany.resx">
       <DependentUpon>202408230326571_OneToMany.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408230349140_CreateManyToManyRelationshipFornecedores.resx">
+      <DependentUpon>202408230349140_CreateManyToManyRelationshipFornecedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -329,6 +338,11 @@
     <Content Include="Views\MovelPedidos\Details.vbhtml" />
     <Content Include="Views\MovelPedidos\Edit.vbhtml" />
     <Content Include="Views\MovelPedidos\Index.vbhtml" />
+    <Content Include="Views\Fornecedors\Create.vbhtml" />
+    <Content Include="Views\Fornecedors\Delete.vbhtml" />
+    <Content Include="Views\Fornecedors\Details.vbhtml" />
+    <Content Include="Views\Fornecedors\Edit.vbhtml" />
+    <Content Include="Views\Fornecedors\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
