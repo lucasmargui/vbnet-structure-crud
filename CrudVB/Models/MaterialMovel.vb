@@ -1,5 +1,7 @@
 ﻿Imports System.ComponentModel.DataAnnotations
 
+Imports System.ComponentModel.DataAnnotations.Schema
+
 Public Class MaterialMovel
     Public Property Id As Integer
 
@@ -40,4 +42,7 @@ Public Class MaterialMovel
 
     <Display(Name:="Date Added")>
     Public Property DataCadastro As DateTime
+
+    ' Propriedade de navegação para relação One-to-Many
+    Public Overridable Property MovelPedidos As ICollection(Of MovelPedido)
 End Class

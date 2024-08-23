@@ -1,4 +1,5 @@
-﻿Imports System.Security.Claims
+﻿Imports System.Data.Entity
+Imports System.Security.Claims
 Imports System.Threading.Tasks
 Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
@@ -26,15 +27,23 @@ Public Class ApplicationDbContext
     End Function
 End Class
 
+
 Public Class CustomDbContext
-    Inherits IdentityDbContext(Of ApplicationUser)
+    Inherits DbContext
+
     Public Sub New()
-        MyBase.New("ConnectProjetoDB", throwIfV1Schema:=False)
+        MyBase.New("name=ConnectProjetoDB")
     End Sub
 
-    Public Shared Function Create() As CustomDbContext
-        Return New CustomDbContext()
-    End Function
+    Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
+        MyBase.OnModelCreating(modelBuilder)
+        ' Configurações adicionais aqui
+    End Sub
 
-    Public Property MaterialMovels As System.Data.Entity.DbSet(Of MaterialMovel)
+    Public Property MaterialMovels As DbSet(Of MaterialMovel)
+    Public Property MovelPedidoes As System.Data.Entity.DbSet(Of MovelPedido)
+
+
 End Class
+
+

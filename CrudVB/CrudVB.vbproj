@@ -230,14 +230,21 @@
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
     <Compile Include="Controllers\MaterialMovelsController.vb" />
+    <Compile Include="Controllers\MovelPedidosController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202408230326571_OneToMany.Designer.vb">
+      <DependentUpon>202408230326571_OneToMany.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202408230326571_OneToMany.vb" />
+    <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="Models\AccountViewModels.vb" />
     <Compile Include="Models\IdentityModels.vb" />
     <Compile Include="Models\ManageViewModels.vb" />
     <Compile Include="Models\DatabaseConnectionModels.vb" />
     <Compile Include="Models\MaterialMovel.vb" />
+    <Compile Include="Models\MovelPedido.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -257,6 +264,9 @@
     <Compile Include="Startup.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\202408230326571_OneToMany.resx">
+      <DependentUpon>202408230326571_OneToMany.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -314,6 +324,11 @@
     <Content Include="Views\MaterialMovels\Details.vbhtml" />
     <Content Include="Views\MaterialMovels\Edit.vbhtml" />
     <Content Include="Views\MaterialMovels\Index.vbhtml" />
+    <Content Include="Views\MovelPedidos\Create.vbhtml" />
+    <Content Include="Views\MovelPedidos\Delete.vbhtml" />
+    <Content Include="Views\MovelPedidos\Details.vbhtml" />
+    <Content Include="Views\MovelPedidos\Edit.vbhtml" />
+    <Content Include="Views\MovelPedidos\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
