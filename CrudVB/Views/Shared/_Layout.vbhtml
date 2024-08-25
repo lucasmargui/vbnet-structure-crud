@@ -7,9 +7,9 @@
 
     <!-- To include bootstrap when creating the project -->
     @*@Styles.Render("~/Content/css")*@
-
     @Styles.Render("~/Content/css/css")
     @Scripts.Render("~/bundles/modernizr")
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -20,6 +20,8 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css"
           rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
 
 </head>
 <body>
@@ -83,18 +85,29 @@
     </header>
     <!-- Navbar -->
 
-        <div>
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
+    <div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
 
+     @Scripts.Render("~/bundles/jquery")
+     @Scripts.Render("~/bundles/bootstrap")
 
-        @*@Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")*@
-        @RenderSection("scripts", required:=False)
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
+
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({});
+        });
+
+    </script>
+
+    @RenderSection("scripts", required:=False)
+
 </body>
 </html>

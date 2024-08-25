@@ -162,7 +162,7 @@
                             <p class="card-text">
                                 <strong>Material:</strong> Wood<br>
                                 <strong>Price:</strong> $199.99<br>
-                                <strong>Description:</strong> High-quality wooden table with a sleek design, ideal for modern interiors.
+                                <strong>Description:</strong> High-quality wooden table with a sleek design.
                             </p>
                             <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Buy Now</a>
                         </div>
@@ -202,7 +202,7 @@
                             <p class="card-text">
                                 <strong>Material:</strong> Glass<br>
                                 <strong>Price:</strong> $149.99<br>
-                                <strong>Description:</strong> Elegant glass vase, perfect for adding a touch of sophistication to any room.
+                                <strong>Description:</strong> Elegant glass vase, perfect for adding a touch of sophistication.
                             </p>
                             <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Buy Now</a>
                         </div>
