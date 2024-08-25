@@ -86,7 +86,7 @@
                     <div class="text-white text-center">
                         <h2>And cover it with any mask</h2>
                         <a class="btn btn-outline-light btn-lg m-2" data-mdb-ripple-init
-                            href="https://mdbootstrap.com/docs/standard/content-styles/masks/" target="_blank" role="button">
+                            href="" target="_blank" role="button">
                             Learn
                             about masks
                         </a>

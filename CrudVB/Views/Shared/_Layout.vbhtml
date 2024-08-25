@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <!-- To include bootstrap when creating the project -->
+    @*@Styles.Render("~/Content/css")*@
+
     @Styles.Render("~/Content/css/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
@@ -19,38 +23,13 @@
 
 </head>
 <body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Logo</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Material", "Index", "MaterialMovels")</li>
-                    <li>@Html.ActionLink("Orders", "Index", "MovelPedidos")</li>
-                    <li>@Html.ActionLink("Suppliers", "Index", "Fornecedors")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-                <div class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Search products...">
-                    <a href="#cart"><i class="bi bi-cart icon"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>*@
 
     <!-- Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000; background-color: #5c4033; color: #f0e6d6; border-bottom: 1px solid #4a2c1c;">
             <div class="container-fluid">
                 <!-- Navbar brand -->
-                <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
+                <a class="navbar-brand nav-link" target="_blank" href="">
                     <strong>LOGO</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarExample01"
@@ -77,23 +56,23 @@
                         @Html.Partial("_LoginPartial")
                         <!-- Icons -->
                         <li class="">
-                            <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+                            <a class="nav-link" href="" rel="nofollow"
                                target="_blank">
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </li>
                         <li class="">
-                            <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
+                            <a class="nav-link" href="" rel="nofollow" target="_blank">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
+                            <a class="nav-link" href="" rel="nofollow" target="_blank">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
+                            <a class="nav-link" href="" rel="nofollow" target="_blank">
                                 <i class="fab fa-github"></i>
                             </a>
                         </li>
