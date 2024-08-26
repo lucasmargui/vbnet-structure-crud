@@ -58,7 +58,38 @@ Open the Web.config File, if your Web.config already contains a <connectionStrin
 - The MyBase.OnModelCreating(modelBuilder) line calls the base implementation of the method, ensuring that any default behavior is preserved unless explicitly overridden.
 
 
+## Migration Structure:
 
+![image](https://github.com/user-attachments/assets/000cc346-354b-433e-8921-09bedb182937)
+
+- up() Method: Defines the operations to be performed when the migration is applied, such as creating a table.
+- down() Method: Defines the operations to revert the changes performed by the up() method, such as deleting a table.
+
+#### Creating Migrations:
+
+Add-Migration <MigrationName> : Creates a new migration file based on changes made to the model.
+
+#### Run Migrations:
+
+Update-Database :  Applies all pending migrations to the database.
+
+#### Check Migration Status:
+
+Get-Migrations : Lists all migrations that have been added to the project.
+
+#### Update Tables:
+
+Update-Database : Applies migrations to the database, updating the tables.
+
+#### Add Fields:
+
+Add-Migration <MigrationName> : Creates a new migration after adding new fields to the model.
+
+#### Apply Changes:
+
+Update-Database : Applies recent changes to the database  
+
+# Project Documentation
 
 ## Create Models
 
@@ -109,44 +140,30 @@ Next, you need to configure the DbContext to include these models.
   ![image](https://github.com/user-attachments/assets/b8a6d901-b541-4d05-a895-ae8c9c16b0dd)
 
 
-## Migration Structure:
-
-![image](https://github.com/user-attachments/assets/000cc346-354b-433e-8921-09bedb182937)
-
-- up() Method: Defines the operations to be performed when the migration is applied, such as creating a table.
-- down() Method: Defines the operations to revert the changes performed by the up() method, such as deleting a table.
-
-#### Creating Migrations:
-
-#### Run Migrations:
-
-#### Check Migration Status:
-
-#### Update Tables:
-
-#### Add Fields:
-
-#### Apply Changes:
-
-#### Undo Changes:
-
-</details>
-
-# Project Documentation
-
-Use Artisan to start the server.
-
-```
-
-```
-
 ## Template Inheritance
+
+In ASP.NET MVC, template inheritance allows you to create a base layout or template that other views can inherit from, promoting reusability and consistency across your application. Here's how you can set up and use template inheritance in VB.NET MVC:
+
+
+ 
+#### Layout (Master Page):
+
+First, a layout page will serve as the base template for other views. This layout page typically includes common elements like headers, footers, and navigation menus.
+
+The base template it's called _Layout.vbhtml
+
+![image](https://github.com/user-attachments/assets/b01fca5b-4dbd-4d24-bc11-7dfcc02df44c)
+
+![image](https://github.com/user-attachments/assets/3d7bb2c0-bf53-4690-b88e-68d5220eb6ce)
 
 
 #### Rendering Content
 
+In your individual views, specify the layout page using the Layout property or use the base layout. This tells the view to use the specified layout page.
 
-#### @extends('layouts.main'):
+![image](https://github.com/user-attachments/assets/1f293dcb-673b-4680-b610-c85c3c7340c6)
+
+
 
 
 
@@ -155,61 +172,88 @@ Use Artisan to start the server.
 
 #### Creating a Controller:
 
+With Entity Framework, creating a controller based on a model is a very straightforward process. Here are the steps to create a controller that uses the Entity Framework to manipulate data from a model:
 
-#### Using the Controller in Routes:
+![image](https://github.com/user-attachments/assets/60159778-af20-42e3-9c0b-9ca553528f81)
+
+![image](https://github.com/user-attachments/assets/c3c288cf-dcbf-40a9-ac63-3ac8057c47fa)
 
 
-#### Actions
+
+## Actions
+
+#### Index():
+
+- HTTP GET: Retrieves and displays a list of all MaterialMovel records from the database.
+Returns a view with the list of MaterialMovels.]
+- Route: MaterialMovels
+
+![image](https://github.com/user-attachments/assets/32d4dbeb-ec64-4529-b84c-a18f1cf6ace1)
+
+
+#### Details(ByVal id As Integer?):
+
+- HTTP GET: Displays details of a specific MaterialMovel identified by the id.
+If id is Nothing, it returns a BadRequest status. If the MaterialMovel is not found, it returns a HttpNotFound status. Otherwise, it returns the view with the details.
+- Route: MaterialMovels/Details/5
+
+![image](https://github.com/user-attachments/assets/67ff3219-cdcb-469e-9c00-8b952f6764c4)
+
+
+#### Create():
+
+- HTTP GET: Returns the view for creating a new MaterialMovel.
+- Route: MaterialMovels/Create
+  
+![image](https://github.com/user-attachments/assets/2fa0fc9f-8551-46f5-8b96-95764343718f)
+
+
+#### Create(ByVal materialMovel As MaterialMovel):
+
+- HTTP POST: Handles the submission of the form to create a new MaterialMovel.
+It uses model binding to populate the materialMovel object. If the model state is valid, the new entity is added to the database and saved, then redirects to the Index action. If the model state is invalid, it returns the view with the current materialMovel data for corrections.
+- Route: MaterialMovels/Create
+
+![image](https://github.com/user-attachments/assets/6bec7d53-64e4-4a98-b61e-f371ed633f9b)
+
+  
+#### Edit(ByVal id As Integer?):
+
+- HTTP GET: Retrieves and displays the edit form for an existing MaterialMovel identified by id.
+Similar to Details, it checks if id is valid and if the MaterialMovel exists before returning the view.
+- Route: MaterialMovels/Edit/5
+
+![image](https://github.com/user-attachments/assets/4ee62892-7a8b-429a-952e-44b299c5a589)
+
+
+#### Edit(ByVal materialMovel As MaterialMovel):
+
+- HTTP POST: Handles form submissions to update an existing MaterialMovel.
+Updates the entity in the database if the model state is valid, and then redirects to the Index action. If the model state is invalid, it returns the view with the current data.
+- Route: MaterialMovels/Edit/5
+  
+![image](https://github.com/user-attachments/assets/18fa0d07-8e7d-4790-a0d3-e34e3673063e)
+
+#### Delete(ByVal id As Integer?):
+
+- HTTP GET: Displays a confirmation page for deleting a specific MaterialMovel identified by id.
+Checks if id is valid and if the MaterialMovel exists before returning the view.
+- Route: MaterialMovels/Delete/5
+
+![image](https://github.com/user-attachments/assets/42c2ca76-073d-4921-8635-1083c116d7e7)
+
+
+#### DeleteConfirmed(ByVal id As Integer):
+
+- HTTP POST: Handles the deletion of a MaterialMovel identified by id.
+Finds the entity, removes it from the database, and saves the changes. Redirects to the Index action after deletion.
+- Route: MaterialMovels/Delete/5
+
+![image](https://github.com/user-attachments/assets/beff7d42-db91-4a65-b409-071c7f68f103)
 
 
 ## Routes
 
-
-## Creating a page
-
-
-#### Creating the Dashboard Component:
-
-
-#### Adding the Function to the Controller:
-
-
-#### Changing the Route:
-
-
-#### Changing Links:
-
-
-
-## Relations one to many
-
-
-#### Creating the Migration:
-
-
-#### Change the Event Model:
-
-
-#### Change to the User model:
-
-
-
-## Relations many to many
-
-
-#### Creating the Relationship Table:
-
-
-
-#### Defining the Relationship in the Models:
-
-
-
-#### Relationship Handling:
-
-
-
-</details>
 
 ## Pages
 
