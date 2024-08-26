@@ -20,13 +20,6 @@ Click "Next".
 ![image](https://github.com/user-attachments/assets/817d4ecf-685b-4d12-b814-c5a21bcd71cb)
 
 
-#### Configure Your Project:
-
-Name your project in the "Project name" field.
-Choose a location on your disk to save the project files.
-Optionally, configure other settings like Solution name and .NET framework version.
-Click "Create".
-
 ## Database Connection
 
 #### Create Database:
@@ -36,16 +29,14 @@ Start SQL Server Management Studio and connect to the SQL Server instance and cr
 ![image](https://github.com/user-attachments/assets/75c8b267-4550-4331-9aae-627db77b5f50)
 
 
-#### Adding the Connection String in Web.config in VB.NET
-
+#### Adding the Connection String
 
 Open the Web.config File, if your Web.config already contains a <connectionStrings> section, you can add your connection string within it.
-
 
 ![image](https://github.com/user-attachments/assets/1e0b2bc8-2192-4bd7-bc19-650530a0379b)
 
 
-#### Adding the Database Connection Class to the IdentityModel
+#### Adding the Database Connection Class
 
 ![image](https://github.com/user-attachments/assets/01c94883-d656-4c2f-818b-a2ad84c19e2b)
 
@@ -57,6 +48,88 @@ Open the Web.config File, if your Web.config already contains a <connectionStrin
 - The method receives an instance of DbModelBuilder as a parameter, which is used to configure the model's structure (e.g., entity relationships, property configurations).
 - The MyBase.OnModelCreating(modelBuilder) line calls the base implementation of the method, ensuring that any default behavior is preserved unless explicitly overridden.
 
+
+##### Enable Migrations 
+
+If you haven't enabled migrations yet, do so in Visual Studio's Package Manager Console:
+
+```
+Enable-Migrations -ContextTypeName CrudVB.CustomDbContext
+```
+
+# Project Documentation
+
+## Create Models
+
+Creating models in VB.NET using the Code-First approach with Entity Framework involves defining your database schema through classes in your application code, rather than starting with a pre-existing database.
+
+#### Define the Model Classes:
+
+Models are simple classes that represent entities in your application, and each class corresponds to a table in the database.
+
+![image](https://github.com/user-attachments/assets/7563a6da-b101-4b5a-8bc6-33fe0818ff9b)
+
+#### Add model in the DbContext Class  
+
+The DbContext class is responsible for managing the database connection and mapping the model classes to database tables.
+
+![image](https://github.com/user-attachments/assets/a25c9b87-832e-4a7a-be04-a1b280c31d24)
+
+  
+#### Configure the Model (Optional) 
+
+Use the OnModelCreating method in the DbContext class to configure model relationships, constraints, and other database schema details.
+  
+![image](https://github.com/user-attachments/assets/8a02dae5-cab8-454e-91eb-323bd63a54c1)
+
+#### Database Initialization 
+
+When you first run the application, Entity Framework will generate a database based on the defined models and context and Migrations can be used to apply changes to the database schema over time.
+
+#### Perform CRUD Operations  
+
+You can now use the context to perform Create, Read, Update, and Delete (CRUD) operations on your models using LINQ:
+  
+![image](https://github.com/user-attachments/assets/b9a99ad9-cdb8-4ee4-9637-0016d4b0d3cf)
+
+
+### Create Models : One to Many 
+
+#### Setting Up the Classes (Models)
+
+Let's assume you are creating a system to manage Orders and Order Items. Each Order can have multiple Order Items, but each Order Item belongs to a single Order.
+
+##### Many orders can belong to one material
+
+![image](https://github.com/user-attachments/assets/c8468901-ec55-4010-b703-56e0a13b0583)
+
+##### One material belongs to many orders
+
+![image](https://github.com/user-attachments/assets/1e275b1d-c7db-46c2-84e9-1fd4b736d96f)
+
+#### Configuring the DbContext
+
+Next, you need to configure the DbContext to include these models.
+
+![image](https://github.com/user-attachments/assets/8bad10c4-0aa7-4197-bf5d-d93665076403)
+
+#### Migrations and Database Creation
+
+- Create a Migration: In the Package Manager Console, run the following command to create a migration
+
+```
+  Add-Migration <MigrationName>
+```
+
+![image](https://github.com/user-attachments/assets/cde54f62-0cae-4d23-b54d-6b840afc7dd9)
+
+- Update the Database: After creating the migration, apply the changes to the database by running:
+
+```
+Update-Database
+```
+
+  ![image](https://github.com/user-attachments/assets/b8a6d901-b541-4d05-a895-ae8c9c16b0dd)
 
 ## Migration Structure:
 
@@ -89,62 +162,10 @@ Add-Migration <MigrationName> : Creates a new migration after adding new fields 
 
 Update-Database : Applies recent changes to the database  
 
-# Project Documentation
-
-## Create Models
-
-Creating models in VB.NET using the Code-First approach with Entity Framework involves defining your database schema through classes in your application code, rather than starting with a pre-existing database.
-
-- Define the Model Classes : Models are simple classes that represent entities in your application, and each class corresponds to a table in the database.
-
-![image](https://github.com/user-attachments/assets/7563a6da-b101-4b5a-8bc6-33fe0818ff9b)
-
-- Create the DbContext Class : The DbContext class is responsible for managing the database connection and mapping the model classes to database tables.
-
-![image](https://github.com/user-attachments/assets/01c94883-d656-4c2f-818b-a2ad84c19e2b)
-  
-- Configure the Model (Optional) : Use the OnModelCreating method in the DbContext class to configure model relationships, constraints, and other database schema details.
-  
-![image](https://github.com/user-attachments/assets/8a02dae5-cab8-454e-91eb-323bd63a54c1)
-
-- Database Initialization : When you first run the application, Entity Framework will generate a database based on the defined models and context and Migrations can be used to apply changes to the database schema over time.
-- Perform CRUD Operations : You can now use the context to perform Create, Read, Update, and Delete (CRUD) operations on your models using LINQ:
-  
-  ![image](https://github.com/user-attachments/assets/b9a99ad9-cdb8-4ee4-9637-0016d4b0d3cf)
-
-
-## One to Many 
-
-#### Setting Up the Classes (Models)
-
-Let's assume you are creating a system to manage Orders and Order Items. Each Order can have multiple Order Items, but each Order Item belongs to a single Order.
-
-![image](https://github.com/user-attachments/assets/c8468901-ec55-4010-b703-56e0a13b0583)
-
-![image](https://github.com/user-attachments/assets/1e275b1d-c7db-46c2-84e9-1fd4b736d96f)
-
-#### Configuring the DbContext
-
-Next, you need to configure the DbContext to include these models.
-
-![image](https://github.com/user-attachments/assets/8bad10c4-0aa7-4197-bf5d-d93665076403)
-
-#### Migrations and Database Creation
-
-- Create a Migration: In the Package Manager Console, run the following command to create a migration
-
-![image](https://github.com/user-attachments/assets/cde54f62-0cae-4d23-b54d-6b840afc7dd9)
-
-- Update the Database: After creating the migration, apply the changes to the database by running:
-
-  ![image](https://github.com/user-attachments/assets/b8a6d901-b541-4d05-a895-ae8c9c16b0dd)
-
 
 ## Template Inheritance
 
 In ASP.NET MVC, template inheritance allows you to create a base layout or template that other views can inherit from, promoting reusability and consistency across your application. Here's how you can set up and use template inheritance in VB.NET MVC:
-
-
  
 #### Layout (Master Page):
 
@@ -164,11 +185,7 @@ In your individual views, specify the layout page using the Layout property or u
 ![image](https://github.com/user-attachments/assets/1f293dcb-673b-4680-b610-c85c3c7340c6)
 
 
-
-
-
 ## Controller
-
 
 #### Creating a Controller:
 
@@ -253,6 +270,39 @@ Finds the entity, removes it from the database, and saves the changes. Redirects
 
 
 ## Routes
+
+Routes are defined in the application configuration, usually in the RegisterRoutes method within the RouteConfig module or a similar file.
+Each route is made up of a URL pattern and rules to direct a request to a specific driver and action.
+
+#### URL Pattern:
+
+The URL pattern is a template that describes the structure of URLs accepted by rotation, such as {controller}/{action}/{id}.
+In the standard, {controller} is the name of the driver, {action} is the name of the action (driver method), and {id} is an optional parameter.
+
+##### Route Mapping:
+
+Routes are mapped to controllers and actions in the application. When a request arrives, the routing system compares the URL against defined URL patterns.
+If a URL matches a route pattern, the request is directed to the driver and action specified in the route.
+
+![image](https://github.com/user-attachments/assets/d4425c40-af78-4a4a-a529-b857ccc5e8aa)
+
+###### Route pattern:
+
+- Route: MaterialMovels
+- Route: MaterialMovels/Details/5
+- Route: MaterialMovels/Create
+- Route: MaterialMovels/Edit/5
+- Route: MaterialMovels/Delete/5
+
+#### Default Values ​​and Parameters:
+
+You can set default values ​​for rotation settings and specify which settings are specific.
+If a URL does not provide all settings, the default values ​​are used.
+
+#### Request Processing:
+
+The routing system intercepts the HTTP request, parses the URL, and uses routing rules to determine which driver and action should process the request.
+The corresponding controller is instantiated, and the action method is called to generate the corresponding response.
 
 
 ## Pages
