@@ -6,11 +6,15 @@
 ## Resources Used
 - Visual Studio 2015
 - SQL Server Management Studio (SSMS):
-
+- LINQ
+- Razor
 
 # Initial environment setup
 
 ## Creating the project
+
+<details>
+<summary>Click to show details about </summary>
 
 Click on "Create a new project" from the start page or select "File" > "New" > "Project" from the menu.
 In the "Create a new project" dialog, search for "Visual Basic" in the search box.
@@ -19,8 +23,13 @@ Click "Next".
 
 ![image](https://github.com/user-attachments/assets/817d4ecf-685b-4d12-b814-c5a21bcd71cb)
 
+</details>
+
 
 ## Database Connection
+
+<details>
+<summary>Click to show details about </summary>
 
 #### Create Database:
 
@@ -57,11 +66,17 @@ If you haven't enabled migrations yet, do so in Visual Studio's Package Manager 
 Enable-Migrations -ContextTypeName CrudVB.CustomDbContext
 ```
 
+</details>
+
 # Project Documentation
 
 ## Create Models
 
+
 Creating models in VB.NET using the Code-First approach with Entity Framework involves defining your database schema through classes in your application code, rather than starting with a pre-existing database.
+
+<details>
+<summary>Click to show details about </summary>
 
 #### Define the Model Classes:
 
@@ -129,9 +144,18 @@ Next, you need to configure the DbContext to include these models.
 Update-Database
 ```
 
-  ![image](https://github.com/user-attachments/assets/b8a6d901-b541-4d05-a895-ae8c9c16b0dd)
+![image](https://github.com/user-attachments/assets/b8a6d901-b541-4d05-a895-ae8c9c16b0dd)
 
-## Migration Structure:
+</details>
+
+## Migrations
+
+Migrations in ASP.NET are an Entity Framework (EF) feature that allows you to manage changes to the database schema in an incremental and controlled manner
+
+<details>
+<summary>Click to show details about </summary>
+
+#### Migrations Structure up() and down()
 
 ![image](https://github.com/user-attachments/assets/000cc346-354b-433e-8921-09bedb182937)
 
@@ -162,10 +186,14 @@ Add-Migration <MigrationName> : Creates a new migration after adding new fields 
 
 Update-Database : Applies recent changes to the database  
 
+</details>
 
 ## Template Inheritance
 
 In ASP.NET MVC, template inheritance allows you to create a base layout or template that other views can inherit from, promoting reusability and consistency across your application. Here's how you can set up and use template inheritance in VB.NET MVC:
+
+<details>
+<summary>Click to show details about </summary>
  
 #### Layout (Master Page):
 
@@ -184,8 +212,14 @@ In your individual views, specify the layout page using the Layout property or u
 
 ![image](https://github.com/user-attachments/assets/1f293dcb-673b-4680-b610-c85c3c7340c6)
 
+</details>
 
 ## Controller
+
+Controllers in ASP.NET MVC are fundamental components that act as intermediaries between the model (data) and the view (user interface). They are responsible for processing the HTTP requests received by the application, interacting with the model to manipulate data and deciding which view should be rendered and sent back to the client.
+
+<details>
+<summary>Click to show details about </summary>
 
 #### Creating a Controller:
 
@@ -197,7 +231,10 @@ With Entity Framework, creating a controller based on a model is a very straight
 
 
 
-## Actions
+### Actions
+
+Actions in controllers in ASP.NET MVC are methods that handle HTTP requests and return a response to the user. Each action corresponds to an application endpoint and can respond to different types of HTTP requests, such as GET, POST, PUT and DELETE.
+
 
 #### Index():
 
@@ -268,25 +305,56 @@ Finds the entity, removes it from the database, and saves the changes. Redirects
 
 ![image](https://github.com/user-attachments/assets/beff7d42-db91-4a65-b409-071c7f68f103)
 
+</details>
 
 ## Routes
 
 Routes are defined in the application configuration, usually in the RegisterRoutes method within the RouteConfig module or a similar file.
 Each route is made up of a URL pattern and rules to direct a request to a specific driver and action.
 
+
+<details>
+<summary>Click to show details about </summary>
+
+### Passing the Controller as a Parameter:
+
+When you explicitly pass the controller name as a parameter to Html.ActionLink, the generated link will point to a specific action for a specific controller. This is the most common behavior when you want to create a link that directs the user to an action that is in a different controller than the one in which the current view was generated.
+
+```
+@Html.ActionLink("Detalhes", "Details", "Products", new { id = 5 }, null)
+```
+
+In this example, the "Details" link will be generated for the Details action in the Products controller, passing an id parameter with the value 5. The resulting URL could be something like /Products/Details/5.
+
+### Not Passing the Controller as a Parameter:
+
+If you do not pass the name of the controller in Html.ActionLink, the framework will assume that the desired controller is the same as the page (view) where the link is being generated. This behavior is useful when you want to create links to actions within the same controller, saving time and avoiding typos when repeating the controller name.
+
+```
+@Html.ActionLink("Editar", "Edit", new { id = 3 }, null)
+```
+
+In this case, if the current view is being rendered from the Products controller, the "Edit" link will be generated for the Edit action in the same controller (Products), with the id parameter set to 3. The resulting URL could be something like / Products/Edit/3.
+
+#### Url.Action
+
+![image](https://github.com/user-attachments/assets/528d559d-6414-4c6a-911b-c1e759d9c224)
+
+```
+@Url.Action(actionName, controllerName, routeValues)
+```
+
+When you use @Url.Action("Index", "Home") it generates the URL for the Index action in the HomeController controller. 
+
+![image](https://github.com/user-attachments/assets/0a0cccb3-ce0a-44d2-9ae8-2a63ec7d186f)
+
+![image](https://github.com/user-attachments/assets/12c39a00-c8c9-451f-8472-40575678e761)
+
+
 #### URL Pattern:
-
-The URL pattern is a template that describes the structure of URLs accepted by rotation, such as {controller}/{action}/{id}.
-In the standard, {controller} is the name of the driver, {action} is the name of the action (driver method), and {id} is an optional parameter.
-
-##### Route Mapping:
-
-Routes are mapped to controllers and actions in the application. When a request arrives, the routing system compares the URL against defined URL patterns.
-If a URL matches a route pattern, the request is directed to the driver and action specified in the route.
 
 ![image](https://github.com/user-attachments/assets/d4425c40-af78-4a4a-a529-b857ccc5e8aa)
 
-###### Route pattern:
 
 - Route: MaterialMovels
 - Route: MaterialMovels/Details/5
@@ -294,16 +362,33 @@ If a URL matches a route pattern, the request is directed to the driver and acti
 - Route: MaterialMovels/Edit/5
 - Route: MaterialMovels/Delete/5
 
-#### Default Values ​​and Parameters:
 
-You can set default values ​​for rotation settings and specify which settings are specific.
-If a URL does not provide all settings, the default values ​​are used.
+</details>
 
-#### Request Processing:
+## Views
 
-The routing system intercepts the HTTP request, parses the URL, and uses routing rules to determine which driver and action should process the request.
-The corresponding controller is instantiated, and the action method is called to generate the corresponding response.
+The Views directory contains subfolders, each named after the application's controllers. For example, if you have a controller called ProductsController, there will be a folder called Products inside the Views directory.
 
+<details>
+<summary>Click to show details about </summary>
+
+![image](https://github.com/user-attachments/assets/65407154-5ada-4d51-a41d-364c232d58e5)
+
+
+#### View Location:
+
+When a controller returns a view, ASP.NET MVC uses a convention to find the appropriate view.
+The convention is that the view name must match the action name in the controller. For example, if the ProductsController controller has an action called Index, ASP.NET MVC will look for a view called Index.cshtml inside the Views/Products folder.
+
+#### View Resolution Process:
+
+When an action method on the controller is called, ASP.NET MVC determines the view to return based on the name of the action.
+The framework searches for the view in the directory corresponding to the controller name within the Views folder. 
+For example:
+ - Action: Index in ProductsController
+ - Expected view path: Views/Products/Index.cshtml
+
+</details>
 
 ## Pages
 
