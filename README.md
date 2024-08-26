@@ -65,19 +65,58 @@ Open the Web.config File, if your Web.config already contains a <connectionStrin
 Creating models in VB.NET using the Code-First approach with Entity Framework involves defining your database schema through classes in your application code, rather than starting with a pre-existing database.
 
 - Define the Model Classes : Models are simple classes that represent entities in your application, and each class corresponds to a table in the database.
+
+![image](https://github.com/user-attachments/assets/7563a6da-b101-4b5a-8bc6-33fe0818ff9b)
+
 - Create the DbContext Class : The DbContext class is responsible for managing the database connection and mapping the model classes to database tables.
+
+![image](https://github.com/user-attachments/assets/01c94883-d656-4c2f-818b-a2ad84c19e2b)
+  
 - Configure the Model (Optional) : Use the OnModelCreating method in the DbContext class to configure model relationships, constraints, and other database schema details.
+  
+![image](https://github.com/user-attachments/assets/8a02dae5-cab8-454e-91eb-323bd63a54c1)
+
 - Database Initialization : When you first run the application, Entity Framework will generate a database based on the defined models and context and Migrations can be used to apply changes to the database schema over time.
 - Perform CRUD Operations : You can now use the context to perform Create, Read, Update, and Delete (CRUD) operations on your models using LINQ:
+  
+  ![image](https://github.com/user-attachments/assets/b9a99ad9-cdb8-4ee4-9637-0016d4b0d3cf)
 
-## Managing Migrations in Laravel
 
-#### Migration Structure:
+## One to Many 
+
+#### Setting Up the Classes (Models)
+
+Let's assume you are creating a system to manage Orders and Order Items. Each Order can have multiple Order Items, but each Order Item belongs to a single Order.
+
+![image](https://github.com/user-attachments/assets/c8468901-ec55-4010-b703-56e0a13b0583)
+
+![image](https://github.com/user-attachments/assets/1e275b1d-c7db-46c2-84e9-1fd4b736d96f)
+
+#### Configuring the DbContext
+
+Next, you need to configure the DbContext to include these models.
+
+![image](https://github.com/user-attachments/assets/8bad10c4-0aa7-4197-bf5d-d93665076403)
+
+#### Migrations and Database Creation
+
+- Create a Migration: In the Package Manager Console, run the following command to create a migration
+
+![image](https://github.com/user-attachments/assets/cde54f62-0cae-4d23-b54d-6b840afc7dd9)
+
+- Update the Database: After creating the migration, apply the changes to the database by running:
+
+  ![image](https://github.com/user-attachments/assets/b8a6d901-b541-4d05-a895-ae8c9c16b0dd)
+
+
+## Migration Structure:
+
+![image](https://github.com/user-attachments/assets/000cc346-354b-433e-8921-09bedb182937)
+
 - up() Method: Defines the operations to be performed when the migration is applied, such as creating a table.
 - down() Method: Defines the operations to revert the changes performed by the up() method, such as deleting a table.
 
 #### Creating Migrations:
-
 
 #### Run Migrations:
 
